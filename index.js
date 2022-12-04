@@ -4,9 +4,10 @@ const addCard = () => {
     url: document.getElementById("imageURL").value,
     title: document.getElementById("taskTitle").value,
     type: document.getElementById("taskType").value,
-    description: document.getElementById("taskDescription").value,
+    description: document.getElementById("taskDescription").value
   };
-  taskContents.insertAdjacentHTML("beforeend",generateTaskCard(newTaskDetails));
+  taskContents = document.getElementById("taskContents");
+  taskContents.insertAdjacentHTML('beforeend',generateTaskCard(newTaskDetails));
 };
 
 const generateTaskCard = ({ id, url, title, type, description }) => {
