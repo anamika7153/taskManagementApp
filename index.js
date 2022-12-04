@@ -24,8 +24,8 @@ const generateTaskCard = ({ id, url, title, type, description }) => {
                 <button class="btn btn-outline-info">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button class="btn btn-outline-danger">
-                    <i class="fas fa-trash-alt"></i>
+                <button class="btn btn-outline-danger" name = ${id} onclick="deleteTask(this)">
+                    <i class="fas fa-trash-alt" name = ${id} onclick="deleteTask(this)"></i>
                 </button>
             </div>
         </div>
@@ -54,4 +54,11 @@ const reloadTaskCard = () => {
     globalTaskData.map((cardData) => {
         taskContents.insertAdjacentHTML('beforeend',generateTaskCard(cardData));
     })
+}
+
+const deleteTask = (e) => {
+    const targetID = e.getAttribute("name");
+    const restTask = globalTaskData.filter((cardData) => cardData.id!=targetID);
+    globalTaskData = restTask;
+    saveToLocalStorage();
 }
